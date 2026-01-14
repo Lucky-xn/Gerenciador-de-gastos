@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import { computed } from 'vue';
   import type { ComputedRef } from 'vue';
+  import {
+    // MoonIcon,
+    SunIcon,
+  } from 'lucide-vue-next';
 
   const props = defineProps({
     income: { type: Number, default: 2200.45 },
@@ -35,21 +39,27 @@
   <div
     class="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200"
   >
-    <div class="bg-indigo-600 p-6 text-white">
-      <div class="flex justify-between items-start">
+    <div class="bg-indigo-600 px-6 py-4 text-white">
+      <div class="flex items-end justify-between">
         <div>
           <p class="text-indigo-200 text-sm font-medium mb-1">
             Restante do Mês
           </p>
           <h3 class="text-3xl font-bold">{{ formatMoney(balance) }}</h3>
         </div>
-        <div class="bg-indigo-500/50 p-2 rounded-lg text-xs font-mono">
-          {{
-            new Date().toLocaleDateString('pt-BR', {
-              month: 'short',
-              year: 'numeric',
-            })
-          }}
+        <div class="flex flex-col gap-3 items-end">
+          <div class="bg-gray-300/50 rounded-full p-1">
+            <component :is="SunIcon" class="w-5 h-5" />
+            <!-- <component :is="MoonIcon" class="w-5 h-5" /> -->
+          </div>
+          <div class="bg-indigo-500/50 p-2 rounded-lg text-xs font-mono">
+            {{
+              new Date().toLocaleDateString('pt-BR', {
+                month: 'short',
+                year: 'numeric',
+              })
+            }}
+          </div>
         </div>
       </div>
     </div>

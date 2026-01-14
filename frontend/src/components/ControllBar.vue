@@ -12,9 +12,9 @@
 
   const tabs = [
     { id: 'dashboard', name: 'Início', route: '/Home' },
-    { id: 'transactions', name: 'Extrato' },
+    { id: 'transactions', name: 'Extrato', route: '/History' },
     { id: 'add', name: '', isSpecial: true },
-    { id: 'reports', name: 'Gráficos' },
+    { id: 'reports', name: 'Gráficos', route: '/Charts' },
     { id: 'profile', name: 'Perfil', route: '/Profile' },
   ];
 

@@ -1,16 +1,23 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import {
     User,
     Bell,
-    ShieldCheck,
-    CreditCard,
+    // ShieldCheck,
+    // CreditCard,
     LogOut,
     ChevronRight,
     Eye,
     EyeOff,
     Camera,
   } from 'lucide-vue-next';
+
+  const router = useRouter();
+
+  function navigateTo(to: string) {
+    router.push(to);
+  }
 
   const user = ref({
     name: 'Victor Neves',
@@ -30,29 +37,13 @@
           label: 'Dados Pessoais',
           icon: User,
           color: 'text-blue-500',
+          route: '/Profile/Personal',
         },
-        {
-          id: 'payment',
-          label: 'Métodos de Pagamento',
-          icon: CreditCard,
-          color: 'text-emerald-500',
-        },
-      ],
-    },
-    {
-      title: 'Preferências',
-      items: [
         {
           id: 'notifications',
           label: 'Notificações',
           icon: Bell,
           color: 'text-orange-500',
-        },
-        {
-          id: 'security',
-          label: 'Segurança e Senha',
-          icon: ShieldCheck,
-          color: 'text-purple-500',
         },
       ],
     },
@@ -123,6 +114,7 @@
           <button
             v-for="item in section.items"
             :key="item.id"
+            @click="navigateTo(item.route || '/Profile')"
             class="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0"
           >
             <div class="flex items-center gap-3">
