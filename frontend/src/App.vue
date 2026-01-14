@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import ControllBar from './components/ControllBar.vue';
+</script>
 
 <template>
-  <RouterView />
+  <div>
+    <RouterView />
+    <ControllBar />
+  </div>
 </template>

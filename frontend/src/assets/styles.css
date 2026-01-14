@@ -4,10 +4,18 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
-  overflow: hidden;
-  background: white;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgb(247, 247, 247);
   color: black;
-  background-color: white;
+}
+
+#app {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
