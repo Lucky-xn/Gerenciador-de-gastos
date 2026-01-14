@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { db } from './db/dbConfig';
 
 import routes from './routes';
 
@@ -11,5 +12,9 @@ app.use(express.json());
 app.use('/api', routes());
 
 app.listen(3030, () => {
-  console.log(`servidor iniciado na porta localhost:3030`)
+  console.log(`servidor iniciado na porta localhost:3030`);
+
+  db.connect().then(() => {
+    console.log('conectado ao banco de dados');
+  });
 })

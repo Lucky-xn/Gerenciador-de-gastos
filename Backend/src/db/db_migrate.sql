@@ -1,0 +1,32 @@
+CREATE TABLE users (
+   id SERIAL PRIMARY KEY,
+   user_name varchar(255) NOT NULL,
+   password_hash text NOT NULL,
+   fixed_income NUMERIC(12, 2) DEFAULT 0,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE gastos_fixos (
+   id SERIAL PRIMARY KEY,
+   ativo BOOLEAN DEFAULT TRUE,
+   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+   value NUMERIC(12, 2) NOT NULL,
+   description TEXT,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE gastos (
+   id SERIAL PRIMARY KEY,
+   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+   value NUMERIC(12, 2) NOT NULL,
+   description TEXT,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE refresh_tokens (
+   id SERIAL PRIMARY KEY,
+   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+   token TEXT NOT NULL,
+   expires_at TIMESTAMP NOT NULL,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

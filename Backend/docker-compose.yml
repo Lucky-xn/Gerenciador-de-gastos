@@ -1,0 +1,16 @@
+services:
+  database:
+    container_name: gastos_db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: userdb
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: gastos_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
