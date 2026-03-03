@@ -1,0 +1,17 @@
+services:
+  db_gastos:
+    container_name: gerenciador_de_gastos
+    image: postgres:15-alpine
+    restart: always
+    shm_size: 128mb
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=sistem_gdg
+    ports:
+      - 4040:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql:ro
+volumes:
+  db_data:
